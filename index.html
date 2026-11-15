@@ -1427,6 +1427,200 @@
       color: var(--accent);
     }
 
+    /* Radio Synopsis Card inside Modal */
+    .player-info.is-clickable {
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 4px 8px;
+      margin: -4px -8px;
+      transition: background-color 150ms var(--ease-out);
+    }
+
+    .player-info.is-clickable:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .synopsis-hero {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: 12px;
+    }
+
+    .synopsis-cover {
+      width: 84px;
+      height: 84px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #1B1F27;
+      border: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .synopsis-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .synopsis-cover img.is-logo-contain {
+      object-fit: contain;
+      padding: 8px;
+      background: #F1F4F8;
+    }
+
+    .synopsis-hero-text {
+      min-width: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .synopsis-station-name {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.25;
+    }
+
+    .synopsis-meta-line {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .synopsis-live-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    .synopsis-live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .synopsis-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border-hairline);
+      border-radius: 12px;
+    }
+
+    .synopsis-box h3 {
+      margin: 0;
+    }
+
+    .synopsis-text {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.65;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .station-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 14px;
+      padding: 12px 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: 12px;
+    }
+
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .spec-label {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .spec-value {
+      font-size: 13px;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .synopsis-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .synopsis-actions-left {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .secondary-btn {
+      min-height: 38px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: background-color 150ms var(--ease-out);
+    }
+
+    .secondary-btn:hover {
+      background: var(--bg-surface-hover);
+      text-decoration: none;
+    }
+
+    @media (max-width: 520px) {
+      .synopsis-hero {
+        align-items: flex-start;
+      }
+      .synopsis-cover {
+        width: 68px;
+        height: 68px;
+      }
+      .station-specs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -1612,7 +1806,7 @@
 
   <!-- Fixed Bottom Audio Player -->
   <footer class="bottom-player" aria-label="Player de rádio">
-    <div class="player-info">
+    <div class="player-info is-clickable" id="playerInfoArea" role="button" tabindex="0" aria-label="Ver informações e sinopse da rádio atual" title="Clique para ver sinopse e informações da rádio">
       <div class="player-art-group" id="playerArtWrap">
         <div class="card-logo-fallback" style="background:#1A2029;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="2"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><circle cx="12" cy="12" r="2"/><path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"/></svg>
@@ -1620,7 +1814,7 @@
       </div>
       <div class="player-text">
         <div class="player-title" id="playerTitle">Escolha uma rádio para ouvir</div>
-        <div class="player-sub" id="playerSub">Brasil · Clique em Play em qualquer emissora</div>
+        <div class="player-sub" id="playerSub">Brasil · Clique em Ouvir em qualquer emissora</div>
         <div class="player-status" id="playerStatus"></div>
       </div>
     </div>
@@ -1851,6 +2045,8 @@
         stationCoverCache: savedCoverCache,
         brandLogoIndex: new Map(),
         historyCache: new Map(),
+        openSynopsisStationId: null,
+        lastPlayerStatus: '',
         playToken: 0,
         hlsInstance: null,
         stallTimer: null
@@ -2660,6 +2856,21 @@
         if (state.currentStationId === station.id) {
           renderPlayerArtwork(station, null);
         }
+        if (state.openSynopsisStationId === station.id) {
+          const coverWrap = document.getElementById('synopsisCoverWrap');
+          if (coverWrap) {
+            coverWrap.innerHTML = renderSynopsisCoverHTML(station, coverUrl);
+            const sImg = coverWrap.querySelector('img');
+            if (sImg) {
+              sImg.addEventListener('load', () => {
+                if (shouldContainLogo(coverUrl, sImg)) sImg.classList.add('is-logo-contain');
+              }, { once: true });
+              sImg.addEventListener('error', () => {
+                coverWrap.innerHTML = buildFallbackBadgeHTML(station.name, station.state || station.country);
+              }, { once: true });
+            }
+          }
+        }
       }
 
       function processCoverQueue() {
@@ -2776,7 +2987,12 @@
       audio.volume = 0.85;
 
       function setPlayerStatus(text) {
+        state.lastPlayerStatus = text;
         document.getElementById('playerStatus').textContent = text;
+        const liveStatusEl = document.getElementById('synopsisLiveStatusText');
+        if (liveStatusEl && state.openSynopsisStationId === state.currentStationId) {
+          liveStatusEl.textContent = text || 'Ao vivo';
+        }
       }
 
       function updatePlayPauseUI() {
@@ -2785,6 +3001,7 @@
         playIcon.style.display = state.isPlaying ? 'none' : 'block';
         pauseIcon.style.display = state.isPlaying ? 'block' : 'none';
         renderGridActiveState();
+        syncOpenSynopsisButtons();
       }
 
       function renderPlayerArtwork(station, albumCoverUrl, preferAlbum = false) {
@@ -3095,7 +3312,12 @@
         if (list.length === 0) return;
         const idx = list.findIndex((s) => s.id === state.currentStationId);
         const nextIdx = idx === -1 ? 0 : (idx + delta + list.length) % list.length;
-        playStation(list[nextIdx]);
+        const nextStation = list[nextIdx];
+        const wasSynopsisOpen = Boolean(state.openSynopsisStationId);
+        playStation(nextStation);
+        if (wasSynopsisOpen) {
+          openStationSynopsisCard(nextStation);
+        }
       }
 
       /* =========================================================================
@@ -3360,12 +3582,15 @@
             cardCoverObserver.observe(card);
           }
 
-          const triggerPlay = (e) => {
+          const triggerPlay = (e, openInfo = true) => {
             if (e) e.stopPropagation();
             if (state.currentStationId === station.id) {
               if (audio.paused) {
                 state.userPaused = false;
                 audio.play().catch(() => playStation(station));
+                if (openInfo) openStationSynopsisCard(station);
+              } else if (openInfo) {
+                openStationSynopsisCard(station);
               } else {
                 state.userPaused = true;
                 clearTimeout(state.stallTimer);
@@ -3373,16 +3598,27 @@
               }
             } else {
               playStation(station);
+              if (openInfo) openStationSynopsisCard(station);
             }
           };
 
-          card.querySelector('.card-cover-wrap').addEventListener('click', triggerPlay);
-          card.querySelector('.card-title').addEventListener('click', triggerPlay);
-          card.querySelector('.card-play-text-btn').addEventListener('click', triggerPlay);
+          card.querySelector('.card-play-fab').addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (state.currentStationId === station.id && !audio.paused) {
+              state.userPaused = true;
+              clearTimeout(state.stallTimer);
+              audio.pause();
+            } else {
+              triggerPlay(e, true);
+            }
+          });
+          card.querySelector('.card-cover-wrap').addEventListener('click', (e) => triggerPlay(e, true));
+          card.querySelector('.card-title').addEventListener('click', (e) => triggerPlay(e, true));
+          card.querySelector('.card-play-text-btn').addEventListener('click', (e) => triggerPlay(e, true));
           card.querySelector('.card-cover-wrap').addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
-              triggerPlay();
+              triggerPlay(null, true);
             }
           });
 
@@ -3393,7 +3629,7 @@
 
           card.querySelector('.history-btn').addEventListener('click', (e) => {
             e.stopPropagation();
-            openStationHistory(station);
+            openStationSynopsisCard(station);
           });
 
           fragment.appendChild(card);
@@ -3430,6 +3666,7 @@
         }
         localStorage.setItem('rb_favorites', JSON.stringify([...state.favorites]));
         updatePlayerFavButton();
+        syncOpenSynopsisButtons();
         updateCountsAndRender();
       }
 
@@ -3604,6 +3841,18 @@
 
         document.getElementById('playerFavBtn').addEventListener('click', () => {
           if (state.currentStationId) toggleFavorite(state.currentStationId);
+        });
+
+        const openCurrentSynopsis = () => {
+          const current = state.stations.find((s) => s.id === state.currentStationId);
+          if (current) openStationSynopsisCard(current);
+        };
+        document.getElementById('playerInfoArea').addEventListener('click', openCurrentSynopsis);
+        document.getElementById('playerInfoArea').addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openCurrentSynopsis();
+          }
         });
 
         // Volume
@@ -4066,6 +4315,239 @@
         }
       }
 
+      function getStateFullName(ufOrRaw) {
+        if (!ufOrRaw) return '';
+        const found = BRAZIL_STATES.find((s) => s.uf.toLowerCase() === String(ufOrRaw).toLowerCase());
+        return found ? `${found.name} (${found.uf})` : ufOrRaw;
+      }
+
+      function formatStationTags(station) {
+        if (station.categories && station.categories.length > 0) {
+          return station.categories.join(', ');
+        }
+        if (station.tags) {
+          return station.tags.split(',').map((t) => t.trim()).filter(Boolean).slice(0, 4).join(', ');
+        }
+        return 'Variedades / Ao Vivo';
+      }
+
+      function buildStationSynopsis(station) {
+        const localHistory = findLocalHistoryFallback(station.name);
+        if (localHistory) return localHistory;
+
+        const locationParts = [station.city, getStateFullName(station.state), station.country].filter(Boolean);
+        const locationText = locationParts.length > 0 ? locationParts.join(', ') : 'Brasil';
+        const genresText = formatStationTags(station);
+        const dialText = station.frequency ? `na sintonia ${station.frequency}` : 'com transmissão digital online';
+        const qualityText = [station.codec, station.bitrate ? `${station.bitrate} kbps` : ''].filter(Boolean).join(' · ');
+
+        return `${station.name} é uma emissora de rádio localizada em ${locationText}, transmitindo ao vivo ${dialText}. Sua programação destaca conteúdos de ${genresText}${qualityText ? `, com sinal de áudio em ${qualityText}` : ''}.`;
+      }
+
+      function syncOpenSynopsisButtons() {
+        const sid = state.openSynopsisStationId;
+        if (!sid) return;
+        const backdrop = document.getElementById('infoModalBackdrop');
+        if (!backdrop || !backdrop.classList.contains('open')) return;
+
+        const playBtn = document.getElementById('synopsisPlayToggleBtn');
+        if (playBtn) {
+          const playingThis = state.currentStationId === sid && state.isPlaying;
+          playBtn.textContent = playingThis ? 'Pausar rádio' : 'Tocar rádio';
+        }
+
+        const favBtn = document.getElementById('synopsisFavBtn');
+        if (favBtn) {
+          const isFav = state.favorites.has(sid);
+          favBtn.textContent = isFav ? 'Remover dos favoritos' : 'Favoritar';
+          favBtn.style.borderColor = isFav ? 'var(--accent)' : '';
+          favBtn.style.color = isFav ? 'var(--accent)' : '';
+        }
+
+        const statusEl = document.getElementById('synopsisLiveStatusText');
+        if (statusEl && state.currentStationId === sid) {
+          statusEl.textContent = state.lastPlayerStatus || (state.isPlaying ? 'Ao vivo' : 'Conectando transmissão...');
+        }
+      }
+
+      function renderSynopsisCoverHTML(station, overrideThumb) {
+        const imgSrc = station.favicon || overrideThumb || '';
+        if (!imgSrc) return buildFallbackBadgeHTML(station.name, station.state || station.country);
+        const containCls = shouldContainLogo(imgSrc) ? ' is-logo-contain' : '';
+        return `<img class="${containCls.trim()}" src="${escapeHtml(imgSrc)}" alt="${escapeHtml(station.name)}" referrerpolicy="no-referrer" />`;
+      }
+
+      async function openStationSynopsisCard(station) {
+        if (!station) return;
+        closeMobileDrawer();
+        state.openSynopsisStationId = station.id;
+
+        const backdrop = document.getElementById('infoModalBackdrop');
+        const titleEl = document.getElementById('infoModalTitle');
+        const bodyEl = document.getElementById('infoModalBody');
+
+        const isCurrent = state.currentStationId === station.id;
+        const isFav = state.favorites.has(station.id);
+        const locationDisplay = [station.city, getStateFullName(station.state) || station.country].filter(Boolean).join(' · ') || 'Brasil';
+        const genresDisplay = formatStationTags(station);
+        const qualityDisplay = [station.codec || 'MP3', station.bitrate ? `${station.bitrate} kbps` : 'Adaptativo'].filter(Boolean).join(' · ');
+        const dialDisplay = station.frequency || 'Web Rádio / Streaming';
+        const statusLabel = isCurrent
+          ? (state.lastPlayerStatus || (state.isPlaying ? 'Ao vivo' : 'Conectando transmissão...'))
+          : 'Pronta para sintonizar';
+        const baseSynopsis = buildStationSynopsis(station);
+
+        let cleanHost = '';
+        if (station.homepage) {
+          try { cleanHost = new URL(station.homepage).hostname.replace(/^www\./i, ''); } catch {}
+        }
+
+        titleEl.textContent = 'Informações da Rádio';
+        bodyEl.innerHTML = `
+          <div class="synopsis-hero">
+            <div class="synopsis-cover" id="synopsisCoverWrap">
+              ${renderSynopsisCoverHTML(station, '')}
+            </div>
+            <div class="synopsis-hero-text">
+              <h3 class="synopsis-station-name">${escapeHtml(station.name)}</h3>
+              <div class="synopsis-meta-line">${escapeHtml([station.state || station.country, station.categories?.[0] || 'Rádio Ao Vivo', station.frequency].filter(Boolean).join(' · '))}</div>
+              <div class="synopsis-live-line">
+                <span class="synopsis-live-dot" aria-hidden="true"></span>
+                <span id="synopsisLiveStatusText">${escapeHtml(statusLabel)}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="synopsis-box">
+            <h3>Sinopse da Emissora</h3>
+            <div class="synopsis-text" id="synopsisTextWrap">
+              <p>${escapeHtml(baseSynopsis)}</p>
+              <div class="history-meta-line" id="synopsisWikiStatus">Buscando informações complementares na Wikipédia...</div>
+            </div>
+          </div>
+
+          <div class="station-specs-grid">
+            <div class="spec-item">
+              <span class="spec-label">Localização</span>
+              <span class="spec-value" title="${escapeHtml(locationDisplay)}">${escapeHtml(locationDisplay)}</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Frequência / Dial</span>
+              <span class="spec-value">${escapeHtml(dialDisplay)}</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Programação / Gêneros</span>
+              <span class="spec-value" title="${escapeHtml(genresDisplay)}">${escapeHtml(genresDisplay)}</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Qualidade de Áudio</span>
+              <span class="spec-value">${escapeHtml(qualityDisplay)}</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Fonte do Diretório</span>
+              <span class="spec-value">${escapeHtml(station.source || 'Diretório Aberto')}</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Site Oficial</span>
+              <span class="spec-value">
+                ${station.homepage
+                  ? `<a href="${escapeHtml(station.homepage)}" target="_blank" rel="noopener noreferrer">${escapeHtml(cleanHost || 'Acessar site')}</a>`
+                  : 'Não informado'}
+              </span>
+            </div>
+          </div>
+
+          <div class="synopsis-actions">
+            <div class="synopsis-actions-left">
+              <button type="button" class="primary-btn" id="synopsisPlayToggleBtn" style="min-height:38px;padding:7px 14px;font-size:13px;">
+                ${isCurrent && state.isPlaying ? 'Pausar rádio' : 'Tocar rádio'}
+              </button>
+              <button type="button" class="secondary-btn" id="synopsisFavBtn" style="${isFav ? 'border-color:var(--accent);color:var(--accent);' : ''}">
+                ${isFav ? 'Remover dos favoritos' : 'Favoritar'}
+              </button>
+              <a class="secondary-btn" href="${buildWhatsAppHref(station)}" target="_blank" rel="noopener noreferrer">Compartilhar</a>
+            </div>
+            <button type="button" class="secondary-btn" id="synopsisContinueBtn">Continuar ouvindo</button>
+          </div>
+        `;
+
+        const coverImg = bodyEl.querySelector('#synopsisCoverWrap img');
+        if (coverImg) {
+          coverImg.addEventListener('load', () => {
+            if (shouldContainLogo(coverImg.src, coverImg)) coverImg.classList.add('is-logo-contain');
+          }, { once: true });
+          coverImg.addEventListener('error', () => {
+            const wrap = document.getElementById('synopsisCoverWrap');
+            if (wrap) wrap.innerHTML = buildFallbackBadgeHTML(station.name, station.state || station.country);
+          }, { once: true });
+        }
+
+        document.getElementById('synopsisPlayToggleBtn').addEventListener('click', () => {
+          if (state.currentStationId === station.id) {
+            if (audio.paused) {
+              state.userPaused = false;
+              audio.play().catch(() => playStation(station));
+            } else {
+              state.userPaused = true;
+              clearTimeout(state.stallTimer);
+              audio.pause();
+            }
+          } else {
+            playStation(station);
+          }
+          syncOpenSynopsisButtons();
+        });
+
+        document.getElementById('synopsisFavBtn').addEventListener('click', () => {
+          toggleFavorite(station.id);
+        });
+
+        document.getElementById('synopsisContinueBtn').addEventListener('click', () => {
+          state.openSynopsisStationId = null;
+          backdrop.classList.remove('open');
+        });
+
+        backdrop.classList.add('open');
+
+        // Enriquecimento assíncrono com Wikipédia (se disponível) sem bloquear o card
+        const wiki = await fetchRadioHistory(station.name);
+        if (!backdrop.classList.contains('open') || state.openSynopsisStationId !== station.id) return;
+
+        const textWrap = document.getElementById('synopsisTextWrap');
+        if (!textWrap) return;
+
+        if (wiki) {
+          const wikiParagraphs = wiki.extract.split(/\n+/).filter(Boolean).slice(0, 3);
+          const localNote = findLocalHistoryFallback(station.name);
+          textWrap.innerHTML = `
+            ${localNote ? `<p>${escapeHtml(localNote)}</p>` : ''}
+            ${wikiParagraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join('')}
+            <div class="history-meta-line">
+              Fonte: ${escapeHtml(wiki.source)} · <a href="${escapeHtml(wiki.url)}" target="_blank" rel="noopener noreferrer">Ler artigo completo</a>
+            </div>
+          `;
+          if (!station.favicon && wiki.thumbnail) {
+            const coverWrap = document.getElementById('synopsisCoverWrap');
+            if (coverWrap) {
+              coverWrap.innerHTML = renderSynopsisCoverHTML(station, wiki.thumbnail);
+              const wImg = coverWrap.querySelector('img');
+              if (wImg) wImg.addEventListener('error', () => {
+                coverWrap.innerHTML = buildFallbackBadgeHTML(station.name, station.state || station.country);
+              }, { once: true });
+            }
+          }
+        } else {
+          const statusNote = document.getElementById('synopsisWikiStatus');
+          if (statusNote) {
+            statusNote.innerHTML = `<button type="button" id="synopsisToBrazilHistoryBtn" style="color:var(--accent);text-decoration:underline;font-size:12px;">Ver História do Rádio no Brasil</button>`;
+            document.getElementById('synopsisToBrazilHistoryBtn')?.addEventListener('click', () => {
+              state.openSynopsisStationId = null;
+              openBrazilRadioHistory();
+            });
+          }
+        }
+      }
+
       function bindLegalModal() {
         const backdrop = document.getElementById('infoModalBackdrop');
         const titleEl = document.getElementById('infoModalTitle');
@@ -4074,6 +4556,7 @@
 
         const openModal = (type) => {
           closeMobileDrawer();
+          state.openSynopsisStationId = null;
           if (type === 'privacy') {
             titleEl.textContent = 'Política de Privacidade';
             bodyEl.innerHTML = `
@@ -4096,12 +4579,21 @@
           backdrop.classList.add('open');
         };
 
-        const closeModal = () => backdrop.classList.remove('open');
+        const closeModal = () => {
+          state.openSynopsisStationId = null;
+          backdrop.classList.remove('open');
+        };
 
         document.getElementById('openPrivacyBtn').addEventListener('click', () => openModal('privacy'));
         document.getElementById('openAboutBtn').addEventListener('click', () => openModal('about'));
-        document.getElementById('openBrazilHistoryBtn').addEventListener('click', openBrazilRadioHistory);
-        document.getElementById('mobileHistoryBtn').addEventListener('click', openBrazilRadioHistory);
+        document.getElementById('openBrazilHistoryBtn').addEventListener('click', () => {
+          state.openSynopsisStationId = null;
+          openBrazilRadioHistory();
+        });
+        document.getElementById('mobileHistoryBtn').addEventListener('click', () => {
+          state.openSynopsisStationId = null;
+          openBrazilRadioHistory();
+        });
         document.getElementById('playerHistoryBtn').addEventListener('click', () => {
           const current = state.stations.find((s) => s.id === state.currentStationId);
           if (current) openStationHistory(current);
