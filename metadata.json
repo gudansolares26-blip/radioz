@@ -1,0 +1,6 @@
+{
+  "name": "Brasil Rádios Ao Vivo",
+  "description": "Plataforma gratuita de rádios online do Brasil e do mundo com milhares de emissoras ao vivo, busca por estado, gênero e player contínuo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
