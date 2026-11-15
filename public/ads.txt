@@ -1,3 +1,2 @@
 # Arquivo ads.txt para verificação do Google AdSense
-# Substitua pub-0000000000000000 pelo seu ID de editor (sem o prefixo "ca-") antes de publicar em domínio próprio.
-google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+google.com, pub-2652984947546796, DIRECT, f08c47fec0942fa0
